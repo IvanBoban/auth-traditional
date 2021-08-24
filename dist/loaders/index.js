@@ -12,14 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const config_1 = __importDefault(require("./config"));
-const loaders_1 = __importDefault(require("./loaders"));
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    const app = express_1.default();
-    yield loaders_1.default({ expressApp: app });
-    app.listen(config_1.default.port, () => {
-        console.log(`Server running on ${config_1.default.port}`);
-    });
-}))();
+const express_1 = __importDefault(require("./express"));
+exports.default = ({ expressApp }) => __awaiter(void 0, void 0, void 0, function* () {
+    yield express_1.default({ app: expressApp });
+});
 //# sourceMappingURL=index.js.map

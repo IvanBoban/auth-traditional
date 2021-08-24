@@ -1,9 +1,12 @@
 import { Router, Request, Response, NextFunction, response } from "express";
+import sessionMiddleware from "../middleware/session";
 
 const route = Router();
 
 export default (app: Router) => {
   app.use("/task", route);
+
+  route.use(sessionMiddleware);
 
   route.post("/create", (req: Request, res: Response) => {});
 

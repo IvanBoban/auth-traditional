@@ -13,13 +13,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const config_1 = __importDefault(require("./config"));
-const loaders_1 = __importDefault(require("./loaders"));
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    const app = express_1.default();
-    yield loaders_1.default({ expressApp: app });
-    app.listen(config_1.default.port, () => {
-        console.log(`Server running on ${config_1.default.port}`);
-    });
-}))();
-//# sourceMappingURL=index.js.map
+const cors_1 = __importDefault(require("cors"));
+const token_1 = __importDefault(require("../api/middleware/token"));
+const api_1 = __importDefault(require("../api"));
+const config_1 = __importDefault(require("../config"));
+const cookie_session_1 = __importDefault(require("cookie-session"));
+exports.default = ({ app }) => __awaiter(void 0, void 0, void 0, function* () {
+    app.use(token_1.default);
+    app.use(express_1.default.urlencoded({ extended: true }));
+    app.use(express_1.default.json());
+    app.set("trust proxy", 1); // trust first proxy
+    app.use(cookie_session_1.default({
+        name: "auth-session",
+        keys: [config_1.default.session.sessionSecret, config_1.default.session.keySecret],
+    }));
+    app.use(cors_1.default({
+        origin: "*",
+    }));
+    app.use("/api", api_1.default());
+    return app;
+});
+//# sourceMappingURL=express.js.map

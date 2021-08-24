@@ -1,14 +1,12 @@
 import express from "express";
+import config from "./config";
+import loaders from "./loaders";
+(async () => {
+  const app = express();
 
-const app = express();
-const port = 8080; // default port to listen
+  await loaders({ expressApp: app });
 
-// define a route handler for the default home page
-app.get("/", (req, res) => {
-  res.send("Hello world!");
-});
-
-// start the Express server
-app.listen(port, () => {
-  console.log(`server started at http://localhost:${port}`);
-});
+  app.listen(config.port, () => {
+    console.log(`Server running on ${config.port}`);
+  });
+})();

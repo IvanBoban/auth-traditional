@@ -1,7 +1,6 @@
 import express from "express";
-import config from "../../config";
 
-const tokenMiddleware = (
+const sessionMiddleware = (
   req: express.Request,
   res: express.Response,
   next: express.NextFunction
@@ -17,4 +16,4 @@ const tokenMiddleware = (
   next();
 };
 
-export default tokenMiddleware;
+export default sessionMiddleware;
