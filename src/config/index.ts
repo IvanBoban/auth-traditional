@@ -9,6 +9,7 @@ export default {
   },
   session: {
     sessionSecret: process.env.SESSION_SECRET,
+    keySecret: process.env.KEY_SECRET,
   },
   mongo: {
     host: process.env.MONGO_HOST,
