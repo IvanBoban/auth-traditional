@@ -12,10 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("./express"));
-const mongo_1 = __importDefault(require("./mongo"));
-exports.default = ({ expressApp }) => __awaiter(void 0, void 0, void 0, function* () {
-    yield mongo_1.default();
-    express_1.default({ app: expressApp });
+const mongoose_1 = __importDefault(require("mongoose"));
+const config_1 = __importDefault(require("../config"));
+exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
+    const connection = yield mongoose_1.default.connect(config_1.default.mongo.URI, {});
+    return connection.connection.db;
 });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=mongo.js.map

@@ -6,13 +6,10 @@ export default (app: Router) => {
   app.use("/auth", route);
 
   route.post("/signIn", (req: Request, res: Response) => {
-    req.session.isAuth = true;
     res.status(200).send({ isAuth: true });
   });
 
-  route.post("/signUp", (req: Request, res: Response) => {
-    res.send("hi");
-  });
+  route.post("/signUp", (req: Request, res: Response) => {});
 
   route.post("/signOut", (req: Request, res: Response) => {
     req.session.isAuth = true;

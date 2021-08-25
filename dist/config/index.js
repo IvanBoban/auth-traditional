@@ -15,9 +15,7 @@ exports.default = {
         keySecret: process.env.KEY_SECRET,
     },
     mongo: {
-        host: process.env.MONGO_HOST,
-        port: process.env.MONGO_PORT,
-        password: process.env.MONGO_PASSWORD,
+        URI: process.env.MONGODBURI,
     },
 };
 //# sourceMappingURL=index.js.map
