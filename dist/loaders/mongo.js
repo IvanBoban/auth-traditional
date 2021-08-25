@@ -17,7 +17,7 @@ const config_1 = __importDefault(require("../config"));
 const logger_1 = __importDefault(require("./logger"));
 exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const connection = yield mongoose_1.default.connect(config_1.default.mongo.URI, {});
+        const connection = yield mongoose_1.default.connect(config_1.default.mongo.URI);
         return connection.connection.db;
     }
     catch (error) {
