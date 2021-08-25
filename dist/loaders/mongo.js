@@ -14,8 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const config_1 = __importDefault(require("../config"));
+const logger_1 = __importDefault(require("./logger"));
 exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
-    const connection = yield mongoose_1.default.connect(config_1.default.mongo.URI, {});
-    return connection.connection.db;
+    try {
+        const connection = yield mongoose_1.default.connect(config_1.default.mongo.URI, {});
+        return connection.connection.db;
+    }
+    catch (error) {
+        logger_1.default.error(error);
+    }
 });
 //# sourceMappingURL=mongo.js.map

@@ -14,8 +14,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("./express"));
 const mongo_1 = __importDefault(require("./mongo"));
+const logger_1 = __importDefault(require("./logger"));
 exports.default = ({ expressApp }) => __awaiter(void 0, void 0, void 0, function* () {
     yield mongo_1.default();
+    logger_1.default.info("Connected to database ");
     express_1.default({ app: expressApp });
+    logger_1.default.info("Mounted express");
 });
 //# sourceMappingURL=index.js.map
