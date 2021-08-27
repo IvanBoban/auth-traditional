@@ -10,15 +10,9 @@ const UserModel = new mongoose.Schema(
     },
 
     password: String,
-
     salt: String,
-
-    role: {
-      type: String,
-      default: "user",
-    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model<mongoose.Document>("User", UserModel);
+export default mongoose.model<mongoose.Document>("Users", UserModel);

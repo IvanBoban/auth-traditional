@@ -2,18 +2,16 @@ export default interface User {
   _id: string;
   email: string;
   password: string;
-  signUpDate: Date;
-  lastSignInDate: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-export interface UserSingUpDTO {
+export interface UserSingInDTO {
   email: string;
   password: string;
-  signUpDate: Date;
-  lastSignInDate: Date;
 }
 
 export interface UserSignInDTO {
-  _id: string;
-  lastSignInDate: Date;
+  email: string;
+  password: string;
 }
