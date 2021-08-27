@@ -6,12 +6,13 @@ export default interface User {
   updatedAt: Date;
 }
 
-export interface UserSingInDTO {
+export interface SignUpDTO {
   email: string;
   password: string;
+  salt: string;
 }
 
-export interface UserSignInDTO {
+export interface UserSignDTO {
   email: string;
   password: string;
 }
